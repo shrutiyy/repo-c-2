@@ -1,0 +1,65 @@
+#include<iostream>
+#include<stdlib.h>
+
+using namespace std;
+
+float oldsalary;
+float newsalary;
+int noofprojects;
+class Department
+{
+    public:
+        int ID;
+        string Name;
+        void input();
+        void display();
+        void appraiseEmployee();
+};
+
+class HRDepartment : public Department
+{
+    public:
+        void cal();
+};
+void HRDepartment :: cal()
+{
+    cout<<"Enter the number of projects completed by the employee : ";
+    cin>>noofprojects;
+    appraiseEmployee(); 
+} 
+
+void Department :: input()
+{
+    cout<<"Enter Employee ID : " ;
+    cin>>ID;
+    cout<<"Enter Employee Name : ";
+    cin>>Name;
+    cout<<"Enter Current Salary : ";
+    cin>>oldsalary;
+};
+
+void Department :: appraiseEmployee()
+{
+    	newsalary=oldsalary+((oldsalary*noofprojects)/100);
+    	display();
+};
+
+void Department :: display()
+{
+	system("cls");
+	cout<<"So, Employee name is "<<Name<<" with ID Number "<<ID<<endl;
+	cout<<"The number of projects completed by the Employee are : "<<noofprojects<<endl;
+	cout<<"Salary of Employee before Appraise is "<<oldsalary<<endl;
+	cout<<"Salary of Employee after Appraise is "<<newsalary;
+	
+}	
+int main()
+{
+	Department d;
+	d.input();
+	
+	HRDepartment h;
+	h.cal();
+	
+	d.display();
+}
